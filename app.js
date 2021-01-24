@@ -16,7 +16,7 @@ const Employee = require("./models/employee");
 const PrivInfo = require('./private');
 
 //Connect to Heroku || Localhost: 5000 || Data base
-const PORT = process.env.PORT || 5000
+const PORT = process.env.PORT || 3000
 const MONGODB_URL = process.env.MONGODB_URL || PrivInfo.db;
 
 //Initialize express
@@ -96,7 +96,7 @@ mongoose
     )
     .then(result => {
         app.listen(PORT);
-        console.log("LISTENING: 5000")
+        console.log("LISTENING: 3000")
     })
     .catch(err => {
         console.log(err);
