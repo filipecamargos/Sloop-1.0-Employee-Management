@@ -1,0 +1,116 @@
+<%- include('../includes/head.ejs') %>
+    <link rel="stylesheet" href="stylesheets/addnotes.css">
+    <%- include('../includes/nav.ejs') %>
+        <main>
+            <div class="custom-container">
+                <!--left bar-->
+                <div class="animate__animated animate__slideInLeft employee-side-bar">
+                    <form class="searchForm" action="/addnote-searchemployee" method="POST">
+                        <input class="form-control" type="text" placeholder=<%=searched.length> 0 ? searched : "Search Employee" %> aria-label="Search" name="searched">
+                        <input type="hidden" name="_csrf" value="<%= csrfToken %>">
+                        <button class="btn btn-outline-white btn-md my-0 ml-sm-2 btn-info" type="submit"><span class="glyphicon glyphicon-search"></span> Search</button>
+                    </form>
+                    <% if (employeeList.length == 0 ) { %>
+                        <div class="employee-basic-info search-message">
+                            <h3>
+                                Sorry no results found for
+                                <q><%= searched %></q>!
+                            </h3>
+                            <p>Try to use something like the first two letters of the employee's name.</p>
+                        </div>
+                        <% } %>
+                            <% employeeList.forEach( employee => { %>
+                                <div class="employee-basic-info">
+                                    <div class="inside-employee-basic-info">
+                                        <h3>
+                                            <span class="glyphicon glyphicon-user "></span>
+                                            <span class="employee"><%= employee.name %></span>
+                                        </h3>
+                                        <h3>
+                                            <span class="glyphicon glyphicon-briefcase"></span>
+                                            <span class="position">
+                                            <% if (employee.position == 'CA') { %>
+                                                Circulation Aide
+                                                <% } else { %>
+                                                    <%= employee.position %>
+                                                        <% }  %>
+                                        </span>
+                                        </h3>
+                                    </div>
+                                </div>
+                                <% }); %>
+                </div>
+                <!--Right Content-->
+                <div class="ritght-side-content">
+                    <!--no selected empty with pencil-->
+                    <div class="animate__animated animate__fadeIn in-ritght-side-content-pencil">
+                        <div style="text-align: center;">
+                            <span class="glyphicon glyphicon-pencil"></span>
+                            <br><br>
+                            <p class="success-message">
+                                <%= noteAddedMessage %>
+                            </p>
+                        </div>
+                    </div>
+                    <!--Form-->
+                    <div class="animate__animated animate__fadeIn add-note-form">
+                        <h3><span class="glyphicon glyphicon-user"></span> Employee: <span id="selectedEmployeeName"></span></h3>
+                        <h3><span class="glyphicon glyphicon-briefcase"></span> Position: <span id="selectedEmployeePosition"></span></h3>
+                        <form action="/addnote-submitnote" method="POST" class="note-form">
+                            <div class="form-row">
+                                <div class="form-group col-md-6">
+                                    <label for="otherLead">Other Lead or N/A</label>
+                                    <input type="text" class="form-control" id="otherLead" placeholder="Name" name="otherLead" required>
+                                </div>
+                                <div class="form-group col-md-6">
+                                    <label for="noteType">Note Type</label>
+                                    <select class="form-control" id="noteType" name="noteType" required>
+                                        <option value="" disabled selected>Happy or Sad</option>
+                                        <option value="Happy">Happy</option>
+                                        <option value="Sad">Sad</option>
+                                        </select>
+                                </div>
+                            </div>
+                            <div class="form-row">
+                                <div class="form-group col-md-6">
+                                    <label for="issue">Note on</label>
+                                    <input type="text" class="form-control" id="issue" placeholder="Ex: Dress and Grooming or Proactivity" name="issue" required>
+                                </div>
+                                <div class="form-group col-md-6">
+                                    <label for="">Talk to the Employee</label>
+                                    <select class="form-control" id="discussed" name="discussed" required>
+                                        <option value="" disabled selected>Yes or No</option>
+                                        <option value="Yes">Yes</option>
+                                        <option value="No">No</option>
+                                        </select>
+                                </div>
+                            </div>
+                            <div class="text-area">
+                                <label for="note">Note</label>
+                                <textarea type="text" class="form-control" id="note" placeholder="Note" rows="9" class="text-area" required></textarea>
+                            </div>
+                            <br>
+                            <input id="employeeName" type="hidden" name="employeeName" value="">
+                            <input id="noteDescription" type="hidden" name="noteDescription" value="">
+                            <input id="date" type="hidden" name="date" value="">
+                            <input type="hidden" name="_csrf" value="<%= csrfToken %>">
+                            <button type="submit" class="btn btn-primary">Submit</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+
+
+
+
+        </main>
+        <%- include('../includes/foot.ejs') %>
+            <!-- Footer -->
+
+            <!--Scripts-->
+            <script src="scripts/addnotes.js"></script>
+
+            <!--Scripts-->
+            </body>
+
+            </html>

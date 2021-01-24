@@ -1,0 +1,36 @@
+<%- include('../includes/head.ejs') %>
+    <link rel="stylesheet" href="stylesheets/login.css">
+    </head>
+
+    <body>
+        <div class="login">
+            <div class="login-head">
+                <img src="images/headIcon.png" alt="Sloop Logo" class="animate__animated animate__fadeIn" class="sign-logo">
+            </div>
+            <form class="form-signin" action="/login" method="POST" novalidate>
+                <div class="animate__animated animate__fadeIn">
+                    <hr>
+                    <h1 class="h3 mb-3 font-weight-normal">Sign In</h1>
+                    <hr>
+                    <label for="inputEmail" class="sr-only">Email address</label>
+                    <input type="email" id="inputEmail" class="form-control" placeholder="Email address" name="email" value="<%= oldInput.email %>" required autofocus>
+                    <br>
+                    <label for="inputPassword" class="sr-only">Password</label>
+                    <input type="password" id="inputPassword" class="form-control" name="password" placeholder="Password" value="<%= oldInput.password %>" required autofocus>
+                    <div class="checkbox mb-3">
+                    </div>
+                    <% if (errorMessage) { %>
+                        <div class="erroMessage">
+                            <%= errorMessage %>
+                        </div>
+                        <% } %>
+                            <br>
+                            <input type="hidden" name="_csrf" value="<%= csrfToken %>">
+                            <button class="btn btn-lg btn-primary btn-block" type="submit">Sign in</button>
+                </div>
+            </form>
+        </div>
+        <%- include('../includes/foot.ejs') %>
+    </body>
+
+    </html>

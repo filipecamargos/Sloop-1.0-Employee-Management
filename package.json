@@ -1,0 +1,41 @@
+{
+    "name": "sloop",
+    "version": "1.0.0",
+    "description": "Employee Note Application All Rights Reserved [Filipe Ferreira]",
+    "main": "app.js",
+    "dependencies": {
+        "animate.css": "^4.1.0",
+        "bcryptjs": "^2.4.3",
+        "body-parser": "^1.19.0",
+        "connect-flash": "^0.1.1",
+        "connect-mongodb-session": "^2.3.3",
+        "cors": "^2.8.5",
+        "csurf": "^1.11.0",
+        "ejs": "^3.1.3",
+        "express": "^4.17.1",
+        "express-session": "^1.17.1",
+        "express-validator": "^6.6.1",
+        "mongodb": "^3.6.0",
+        "mongoose": "^5.9.27",
+        "node": "^14.7.0",
+        "nodemailer": "^6.4.11",
+        "nodemon": "^2.0.4",
+        "path": "^0.12.7",
+        "sweetalert": "^2.1.2"
+    },
+    "devDependencies": {},
+    "scripts": {
+        "test": "echo \"Error: no test specified\" && exit 1",
+        "start": "nodemon app.js"
+    },
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/filipecamargos/Sloop.git"
+    },
+    "author": "Filipe Ferreira",
+    "license": "ISC",
+    "bugs": {
+        "url": "https://github.com/filipecamargos/Sloop/issues"
+    },
+    "homepage": "https://github.com/filipecamargos/Sloop#readme"
+}

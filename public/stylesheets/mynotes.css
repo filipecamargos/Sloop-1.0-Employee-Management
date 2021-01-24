@@ -1,0 +1,76 @@
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@600&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Nunito:wght@300&family=Roboto:wght@700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Roboto+Condensed:wght@700&display=swap');
+#mynotes-container {
+    padding: 20px 20% 0px;
+}
+
+#mynotes-container .animate__fadeIn {
+    --animate-duration: 2.5s;
+}
+
+.note-list-user-top {
+    display: block;
+    text-align: center;
+    background-color: #fafdff;
+    box-shadow: 0 6px 9px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    border-radius: 5px;
+    padding: 20px 5px 10px;
+}
+
+.note-list-user-top .glyphicon-book {
+    font-size: 35px;
+    color: #0F5E9C;
+}
+
+.note-list-user-top h2 {
+    margin-top: 6px;
+    font-family: 'Open Sans', sans-serif;
+    font-size: 20px
+}
+
+.note-container {
+    overflow: auto;
+    height: 650px;
+    background-color: #F6F6F8;
+    font-family: 'Open Sans', sans-serif;
+    margin-top: 20px;
+    margin-bottom: 25px;
+    border-radius: 5px;
+    box-shadow: 0 6px 9px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    padding: 5px 15px 15px;
+}
+
+.note {
+    background-color: #fafdff;
+    padding: 10px 2em 10px;
+    margin-top: 20px;
+    border-radius: 5px;
+    box-shadow: 0 6px 9px 0 rgba(0, 0, 0, 0.1), 0 6px 20px 0 rgba(0, 0, 0, 0.15);
+}
+
+.note .note-top-part {
+    display: flex;
+    justify-content: space-between;
+}
+
+.note .note-top-part-rigt {
+    width: 300px;
+    text-align: left;
+}
+
+.note .glyphicon-thumbs-up {
+    color: #0F5E9C;
+}
+
+.note .glyphicon-thumbs-down {
+    color: #FF0101;
+}
+
+.note h3 {
+    font-size: 16px;
+}
+
+.note p {
+    font-size: 14px;
+}

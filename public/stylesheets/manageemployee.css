@@ -1,0 +1,58 @@
+#add-employee-form {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    padding-top: 30px;
+    /* Manipulated on JS to flex */
+    display: none;
+}
+
+#employeeAdd {
+    height: 100%;
+}
+
+.centered-form {
+    width: 300px;
+}
+
+.centered-form h4 {
+    text-align: center;
+}
+
+.erroMessageEmployee {
+    margin-top: 10px;
+    color: #FF0000;
+}
+
+.successMessageEmployee {
+    margin-top: 10px;
+    color: #5CB85C;
+}
+
+.add-employee-button {
+    margin-top: 10px;
+}
+
+.add-employee-button:hover {
+    background-color: #FAFDFF;
+}
+
+.two-buttons {
+    width: 100%;
+    text-align: right;
+    margin-top: 15px;
+}
+
+.two-buttons form,
+button {
+    display: inline;
+}
+
+#edit-employee-form {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    padding-top: 30px;
+    /* Manipulated on JS to flex */
+    display: none;
+}

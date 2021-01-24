@@ -1,0 +1,64 @@
+<%- include('../includes/head.ejs') %>
+    <link rel="stylesheet" href="stylesheets/mynotes.css">
+    <link rel="stylesheet" href="stylesheets/myinfo.css">
+    <%- include('../includes/nav.ejs') %>
+        <main>
+            <input type="hidden" id="servingFrom" value="<%= pageType %>">
+            <div id="mynotes-container">
+                <div class="animate__animated animate__fadeIn note-list-user-top">
+                    <h3><span class="glyphicon glyphicon-user"></span>
+                        <%= user %>
+                    </h3>
+                    <div class="user-info">
+                        <hr>
+                        <h4>
+                            <span class="glyphicon glyphicon-briefcase"></span>
+                            <%= position %>
+                        </h4>
+                        <hr>
+                        <h4>
+                            <span class="glyphicon glyphicon-envelope"></span>
+                            <%= email %>
+                        </h4>
+                        <hr>
+                        <button id="editPasswordBtn" type="button" class="btn btn-primary">Change Password</button>
+                    </div>
+                </div>
+                <div>
+                    <div class="animate__animated animate__fadeIn passwordForm">
+                        <form id="password-change-form" action="/info-change-password" method="POST">
+                            <hr>
+                            <h4>Change Password:</h4>
+                            <hr>
+                            <div class="form-group">
+                                <label for="currentPassword">Current Password</label>
+                                <input type="password" class="form-control" id="currentPassword" placeholder="Password" name="currentPassword" value="<%=oldInput.password %>" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="newPassword">New Password</label>
+                                <input type="password" class="form-control" id="newPassword" placeholder="New Password" name="newPassword" value="<%=oldInput.newPassword %>" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="confirmPassword">Confirm Password</label>
+                                <input type="password" class="form-control" id="confirmPassword" placeholder="Confirm Password" name="confirmPassword" value="<%=oldInput.confirmPassword %>" required>
+                            </div>
+                            <% if (errorMessage == "Password Successfully Updated!") { %>
+                                <div class="errorMessage" style="color: #5DB85D"><span id="errorMessage"><%= errorMessage %> </span></div>
+                                <% }  else { %>
+                                    <div class="errorMessage"><span id="errorMessage"><%= errorMessage %> </span></div>
+                                    <% } %>
+                                        <input type="hidden" id="token" name="_csrf" value="<%= csrfToken %>">
+                                        <input type="hidden" id="editId" name="id" value="<%= userId %> ">
+                                        <button type="submit" id="save" class="btn btn-success">Save</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+
+        </main>
+
+        <%- include('../includes/foot.ejs') %>
+            <script src="scripts/myinfo.js"></script>
+            </body>
+
+            </html>

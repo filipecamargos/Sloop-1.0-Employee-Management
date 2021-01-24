@@ -1,0 +1,159 @@
+<%- include('../includes/head.ejs') %>
+    <link rel="stylesheet" href="stylesheets/addnotes.css">
+    <link rel="stylesheet" href="stylesheets/manageemployee.css">
+    <%- include('../includes/nav.ejs') %>
+        <main>
+            <div class="custom-container">
+                <!--left bar-->
+                <div class="animate__animated animate__slideInLeft employee-side-bar">
+                    <form class="searchForm" action="/managemployee-searchEmployee" method="POST">
+                        <input class="form-control" type="text" placeholder=<%=searched.length> 0 ? searched : "Search Employee" %> aria-label="Search" name="searched">
+                        <input type="hidden" name="_csrf" value="<%= csrfToken %>">
+                        <button class="btn btn-outline-white btn-md my-0 ml-sm-2 btn-info" type="submit"><span class="glyphicon glyphicon-search"></span> Search</button>
+                    </form>
+                    <% if (employeeList.length == 0 ) { %>
+                        <div class="employee-basic-info search-message">
+                            <h3>
+                                Sorry no results found for
+                                <q><%= searched %></q>!
+                            </h3>
+                            <p>Try to use something like the first two letters of the employee's name.</p>
+                        </div>
+                        <% } %>
+                            <% employeeList.forEach( employee => { %>
+                                <div class="employee-basic-info">
+                                    <div class="inside-employee-basic-info">
+                                        <h3>
+                                            <span class="glyphicon glyphicon-user "></span>
+                                            <span class="employee"><%= employee.name %></span>
+                                        </h3>
+                                        <h3>
+                                            <span class="glyphicon glyphicon-briefcase"></span>
+                                            <span class="position">
+                                                <% if (employee.position == 'CA') { %>
+                                                    Circulation Aide
+                                                    <% } else { %>
+                                                        <%= employee.position %>
+                                                            <% }  %>
+                                                </span>
+                                        </h3>
+                                        <h3>
+                                            <span class="glyphicon glyphicon-envelope"></span>
+                                            <span class="email"><%= employee.email %></span>
+                                        </h3>
+                                        <div class="two-buttons">
+                                            <button type="button" class="btn btn-primary" onclick="editEmployee(event)">Edit</button>
+                                            <form>
+                                                <input type="text" name="id" value="<%= employee._id %>" hidden></input>
+                                                <input type="hidden" name="_csrf" value="<%= csrfToken %>">
+                                                <button type="button" class="btn btn-danger" onclick="removeEmployee(event)">Delete</button>
+                                            </form>
+                                        </div>
+                                    </div>
+                                </div>
+                                <% }); %>
+                </div>
+                <!--Right Content-->
+                <div class="ritght-side-content">
+                    <!--no selected empty with pencil-->
+                    <div id="employeeAdd">
+                        <div class="animate__animated animate__fadeIn in-ritght-side-content-pencil">
+                            <div style="text-align: center; display: block;">
+                                <span class="glyphicon glyphicon-user"></span><br>
+                                <% if (errorMessage != null && errorMessage != "Employee Added Successfully!" && errorMessage != "Employee's Information Updated Successfully!" ) { %>
+                                    <div class="erroMessageEmployee">
+                                        <%= errorMessage %>
+                                    </div>
+                                    <button class="btn btn-secondary add-employee-button">Continue</button>
+                                    <% } else if (errorMessage == "Employee Added Successfully!") { %>
+                                        <div class="successMessageEmployee">
+                                            <%= errorMessage %>
+                                        </div>
+                                        <button class="btn btn-success add-employee-button">Add Employee</button>
+                                        <% } else if (errorMessage == "Employee's Information Updated Successfully!") { %>
+                                            <div class="successMessageEmployee">
+                                                <%= errorMessage %>
+                                            </div>
+                                            <button class="btn btn-success add-employee-button">Add Employee</button>
+                                            <% } else { %>
+                                                <button class="btn btn-success add-employee-button">Add Employee</button>
+                                                <% } %>
+                            </div>
+                        </div>
+                    </div>
+                    <div id="add-employee-form" class="animate__animated animate__fadeIn">
+                        <form action="/addemployee" method="POST" class="centered-form">
+                            <hr>
+                            <h4>Add New Employee:</h4>
+                            <hr>
+                            <div class="form-group">
+                                <label for="name">Name</label>
+                                <input type="text" class="form-control" id="name" placeholder="Name" name="name" value="<%= oldInput.name %>" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="exampleInputEmail1">Email</label>
+                                <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter email" name="email" value="<%= oldInput.email %>" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="position">Position</label>
+                                <select class="form-control" id="position" name="position" required>
+                                    <option value="" disabled selected>Position</option>
+                                    <% if (position == 'Manager') { %>
+                                        <option>Manager</option>
+                                        <% } %>    
+                                    <option>Admin</option>
+                                    <option>Lead</option>
+                                    <option>CA</option>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label for="exampleInputPassword1">Temporary Password</label>
+                                <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Password" name="password" value="<%= oldInput.password%>" required>
+                            </div>
+                            <input type="hidden" name="_csrf" value="<%= csrfToken %>">
+                            <button type="submit" class="btn btn-success">Add Employee</button>
+                        </form>
+                    </div>
+                    <div id="edit-employee-form" class="animate__animated animate__fadeIn">
+                        <form action="/editemployee" method="POST" class="centered-form">
+                            <hr>
+                            <h4>Edit Employee Info:</h4>
+                            <hr>
+                            <div class="form-group">
+                                <label for="name">Name</label>
+                                <input type="text" class="form-control" id="editName" placeholder="Name" name="name" value="<%= oldInput.name %>" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="exampleInputEmail1">Email</label>
+                                <input type="email" class="form-control" id="editEmail" aria-describedby="emailHelp" placeholder="Enter email" name="email" value="<%= oldInput.email %>" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="position">Position</label>
+                                <select class="form-control" id="editposition" name="position" required>
+                                    <option value="" disabled selected>Position</option>
+                                    <% if (position == 'Manager') { %>
+                                        <option>Manager</option>
+                                        <% } %>  
+                                    <option>Admin</option>
+                                    <option>Lead</option>
+                                    <option>CA</option>
+                                </select>
+                            </div>
+                            <input type="hidden" name="_csrf" value="<%= csrfToken %>">
+                            <input type="hidden" id="editId" name="editId" value="">
+                            <button type="submit" class="btn btn-success">Submit</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+
+            <%- include('../includes/foot.ejs') %>
+                <!-- Footer -->
+
+                <!--Scripts-->
+                <script src="scripts/manageemployee.js"></script>
+
+                <!--Scripts-->
+                </body>
+
+                </html>

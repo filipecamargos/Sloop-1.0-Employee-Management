@@ -1,0 +1,147 @@
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@600&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Nunito:wght@300&family=Roboto:wght@700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Roboto+Condensed:wght@700&display=swap');
+body {
+    background-color: #EAEAEC;
+}
+
+.custom-container {
+    display: grid;
+    margin-bottom: 16px;
+    grid-template-columns: 320px 1fr;
+}
+
+
+/* Left side bar content */
+
+.employee-side-bar {
+    overflow: auto;
+    background-color: #F6F6F8;
+    height: 750px;
+    font-family: 'Open Sans', sans-serif;
+}
+
+.searchForm {
+    display: flex;
+    padding: 1em;
+}
+
+.search-message {
+    padding: 1em;
+}
+
+.searchForm .btn {
+    margin-left: 10px;
+}
+
+.searchForm .btn:hover {
+    background-color: #F6F6F8;
+    border-color: #F6F6F8;
+}
+
+.employee-basic-info h3 {
+    font-size: 15px;
+}
+
+.employee-basic-info {
+    border-bottom-style: solid;
+    border-bottom-width: 1px;
+    border-bottom-color: #777770;
+}
+
+.employee-basic-info:hover {
+    cursor: pointer;
+    background-color: #ffffff;
+    color: #0080F6;
+}
+
+.inside-employee-basic-info {
+    padding: 1em;
+    border-radius: 6px;
+}
+
+.inside-employee-basic-info:hover {
+    background-color: #ffffff;
+}
+
+.employee-basic-info .glyphicon {
+    color: #1061A1;
+}
+
+.btn:hover {
+    color: #1061A1;
+    background-color: #ffffff;
+    border-color: #ffffff;
+}
+
+.btn:active {
+    border-color: none;
+}
+
+.animate__slideInLeft {
+    --animate-duration: 1.2s;
+}
+
+
+/* Right Content of the page */
+
+.ritght-side-content {
+    height: auto;
+    width: auto;
+    margin: 0px 25px 0px;
+    border-radius: 5px;
+    background-color: #fafdff;
+    box-shadow: 0 6px 9px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    padding: 2em;
+    font-family: 'Open Sans', sans-serif;
+}
+
+
+/*No Selected Content to add note*/
+
+.in-ritght-side-content-pencil {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+    display: flex;
+}
+
+.ritght-side-content .animate__fadeIn {
+    --animate-duration: 2.5s;
+}
+
+.in-ritght-side-content-pencil .glyphicon {
+    font-size: 80px;
+    color: #0F5E9C;
+}
+
+
+/*Selected Content to add note*/
+
+.add-note-form {
+    height: 100%;
+    display: none;
+}
+
+.add-note-form h3 {
+    font-size: 22px;
+    color: #000000;
+}
+
+.col-md-6 {
+    padding-left: 0px;
+}
+
+.text-area {
+    margin-right: 15px;
+}
+
+.note-form {
+    margin-top: 50px;
+}
+
+.success-message {
+    color: #5CB85C;
+    font-size: 20px;
+}

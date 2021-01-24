@@ -1,0 +1,53 @@
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@600&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Nunito:wght@300&family=Roboto:wght@700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Roboto+Condensed:wght@700&display=swap');
+#mynotes-container {
+    height: 730px;
+    font-family: 'Open Sans', sans-serif;
+}
+
+#mynotes-container h3 {
+    font-size: 28px;
+    margin-bottom: 20px;
+}
+
+#mynotes-container h4 {
+    font-size: 20px;
+}
+
+.note-list-user-top .glyphicon-user {
+    font-size: 35px;
+    color: #0F5E9C;
+}
+
+.note-list-user-top .glyphicon-briefcase,
+.glyphicon-envelope {
+    color: #0F5E9C;
+}
+
+.user-info {
+    text-align: left;
+    padding-left: 15px;
+}
+
+#editPasswordBtn {
+    height: 40px;
+}
+
+#editPasswordBtn:hover {
+    background-color: #FAFDFF;
+    border-color: #FAFDFF;
+    color: #0080F6;
+}
+
+.passwordForm {
+    width: 300px;
+    margin-top: 30px;
+    margin-bottom: 30px;
+    display: none;
+}
+
+.errorMessage {
+    color: #ff0000;
+    padding-bottom: 10px;
+}

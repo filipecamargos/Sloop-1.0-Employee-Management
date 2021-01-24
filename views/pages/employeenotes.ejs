@@ -1,0 +1,82 @@
+<%- include('../includes/head.ejs') %>
+    <link rel="stylesheet" href="stylesheets/employeenotes.css">
+    <%- include('../includes/nav.ejs') %>
+        <main>
+            <input type="hidden" id="token" name="_csrf" value="<%= csrfToken %>">
+            <!--Left Sid Inployee content-->
+            <div class="custom-container">
+                <!--left bar-->
+                <div class="animate__animated animate__slideInLeft employee-side-bar">
+                    <form class="searchForm" action="/employeenotes-searchemployee" method="POST">
+                        <input class="form-control" type="text" placeholder=<%=searched.length> 0 ? searched : "Search Employee" %> aria-label="Search" name="searched">
+                        <input type="hidden" name="_csrf" value="<%= csrfToken %>">
+                        <button class="btn btn-outline-white btn-md my-0 ml-sm-2 btn-info" type="submit"><span class="glyphicon glyphicon-search"></span> Search</button>
+                    </form>
+                    <% if (employeeList.length == 0 ) { %>
+                        <div class="employee-basic-info search-message">
+                            <h3>
+                                Sorry no results found for
+                                <q><%= searched %></q>!
+                            </h3>
+                            <p>Try to use something like the first two letters of the employee's name.</p>
+                        </div>
+                        <% } %>
+                            <% employeeList.forEach( employee => { %>
+                                <div class="employee-basic-info">
+                                    <div class="inside-employee-basic-info">
+                                        <h3>
+                                            <span class="glyphicon glyphicon-user "></span>
+                                            <span class="employee"><%= employee.name %></span>
+                                        </h3>
+                                        <h3>
+                                            <span class="glyphicon glyphicon-briefcase"></span>
+                                            <span class="position">
+                                            <% if (employee.position == 'CA') { %>
+                                                Circulation Aide
+                                                <% } else { %>
+                                                    <%= employee.position %>
+                                                        <% }  %>
+                                        </span>
+                                        </h3>                                       
+                                    </div>
+                                </div>
+                                <% }); %>
+                </div>
+                <!----->
+                <div class="ritght-side-content">
+                    <!--no selected empty with pencil-->
+                    <div class="animate__animated animate__fadeIn in-ritght-side-content-list">
+                        <div style="text-align: center;">
+                            <span class="glyphicon glyphicon-list"></span>
+                        </div>
+                    </div>
+                    <div class="animate__animated animate__fadeIn employee-note-list">
+                        <div class="selected-employee-info-card">
+                            <div>
+                                <h3><span class="glyphicon glyphicon-user"></span> Employee: <span id="selectedEmployeeName"></span></h3>
+                                <h3><span class="glyphicon glyphicon-briefcase"></span> Position: <span id="selectedEmployeePosition"></span></h3>
+                            </div>
+                            <div class='selected-employee-info-card-couting-notes'>
+                                <h3 id="postiveIcon" class="postiveIcon"></h3>
+                                <h3 id="negativeIcon" class="negativeIcon"></h3>
+                            </div>
+                        </div>
+                        <span id="noteJsonList" hidden><%= notesList %></span>
+                        <div class="noteList">
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+
+
+
+        </main>
+        <%- include('../includes/foot.ejs') %>
+            <!--Scripts-->
+            <script src="scripts/employeenotes.js"></script>
+            <!--Scripts-->
+            </body>
+
+            </html>

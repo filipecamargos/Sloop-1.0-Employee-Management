@@ -1,0 +1,35 @@
+<link rel="stylesheet" href="stylesheets/nav.css">
+<link rel="preload" href="images/logo.png" as="image">
+</head>
+
+<body>
+    <nav class="navbar navbar-inverse navbar-fixed-top" class="custom-nav">
+        <div class="container-fluid">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>                        
+        </button>
+                <span class="navbar-brand" href="#"><span><img  class="logImg" src="images/logo.png" alt="Sloop Logo"></span></span>
+            </div>
+            <div class="collapse navbar-collapse" id="myNavbar">
+                <ul class="nav navbar-nav">
+                    <% if (position == 'Manager') { %>
+                        <li class=<%=title=="Sloop - Employee Notes" ? "selected" : "" %>><a href="/employeenotes"><span class= "animate__animated animate__fadeIn glyphicon glyphicon-th-list"></span> Employee Notes</a></li>
+                        <% } %>
+                            <% if (position == 'Manager' || position == 'Lead' || position == 'Admin') { %>
+                                <li class=<%=title=="Sloop - Add Notes" ? "selected" : "" %>><a href="/addnotes"><span class="animate__animated animate__fadeIn glyphicon glyphicon-pencil"></span> Add Note</a></li>
+                                <li class=<%=title=="Sloop - My Notes" ? "selected" : "" %>><a href="/mynotes"><span class="animate__animated animate__fadeIn glyphicon glyphicon-book"></span> My Notes</a></li>
+                                <% } %>
+                                    <% if (position == 'Manager' || position == 'Admin') { %>
+                                        <li class=<%=title=="Sloop - Manage Employee" ? "selected" : "" %>><a href="/manageemployee"><span class="animate__animated animate__fadeIn glyphicon glyphicon-cog"></span> Manage Employee</a></li>
+                                        <% } %>
+                </ul>
+                <ul class="nav navbar-nav navbar-right">
+                    <li class=<%=title=="Sloop - My Info" ? "selected" : "" %>><a href="/myinfo"><span class="animate__animated animate__fadeIn glyphicon glyphicon-user"></span> Hi <%= user %></a></li>
+                    <li><a href="logout"><span class="glyphicon glyphicon-log-out"></span> LogOut</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
