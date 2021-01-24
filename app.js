@@ -13,7 +13,7 @@ const flash = require('connect-flash');
 const Employee = require("./models/employee");
 
 //Import Private values
-const PrivInfo = require('./private');
+const PrivInfo = require('../config/private');
 
 //Connect to Heroku || Localhost: 5000 || Data base
 const PORT = process.env.PORT || 3000
