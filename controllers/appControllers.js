@@ -8,7 +8,7 @@ const Employee = require('../models/employee')
 const Note = require('../models/note');
 
 //Import Private values
-const PrivInfo = require('../config/private');
+const PrivInfo = require('../private');
 
 //Set up the transporter for the e-mail
 const transporter = nodemailer.createTransport({
