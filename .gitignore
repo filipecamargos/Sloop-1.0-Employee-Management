@@ -1,6 +1,7 @@
 # Node build artifacts
 node_modules
 npm-debug.log
+private.js
 
 # Local development
 *.env
@@ -12,4 +13,3 @@ Dockerfile
 docker-compose.yml
 
 # Private Info
-config
