@@ -3,6 +3,6 @@ This application allows managers or admins to create, delete, and edit new emplo
 
 Interface:
 
-![alt text](https://github.com/filipecamargos/Sloop-1.0-Employee-Management/public/images/login.JPG)  
+![alt text](https://github.com/filipecamargos/Sloop-1.0-Employee-Management/blob/main/public/images/login.JPG)  
 
 
