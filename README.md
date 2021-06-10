@@ -5,4 +5,10 @@ Interface:
 
 ![alt text](https://github.com/filipecamargos/Sloop-1.0-Employee-Management/blob/main/public/images/login.JPG)  
 
+![alt text](https://github.com/filipecamargos/Sloop-1.0-Employee-Management/blob/main/public/images/interface.JPG) 
+
+Note: Check this application by using a dummy manager account. The load my take a litle bit, it is a free hosting account!
+![alt text](https://github.com/filipecamargos/Sloop-1.0-Employee-Management/blob/main/public/images/message.JPG)
+
+Link: https://sloopapp.herokuapp.com/
 
